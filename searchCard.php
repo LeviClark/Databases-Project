@@ -1,12 +1,12 @@
 <?php
 
 	$cardName = filter_input(INPUT_POST, 'cardName');
-	$pointValue = filter_input(INPUT_POST, 'pointValue');
+	//$pointValue = filter_input(INPUT_POST, 'pointValue');
 	if(!empty($cardName)){
-		echo "Card name is: ";
+		// echo "Card name is: " . $cardName . "<br />";
 	} else{
 		echo "card name is empty";
-		//die();
+		die();
 	}
 
 	$dbhost = 'mysql.eecs.ku.edu';
@@ -19,16 +19,16 @@
 	else {
 		echo "connected <br>";
 	}
-	$randomArmy = "SELECT Card_Name, Point_Value FROM Cards ORDER BY RAND() LIMIT 5";
 	$sql = "INSERT INTO Cards (Card_Name, Point_Value) VALUES ('$cardName', $pointValue)";
+    $search = "SELECT Card_Name FROM Cards WHERE Card_Name LIKE '%$cardName%'";
 	mysql_select_db('ckari');
-	$retval = mysql_query($randomArmy, $connect);
+	$retval = mysql_query($search, $connect);
 
 	if(! $retval ){ die('COULD NOT GET DATA: ' . mysql_error()); }
 	while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
-		echo "Card Name: " . $row["Card_Name"]. " - Points: " . $row["Point_Value"]. "<br> ";
+		echo "Found card - " . $row["Card_Name"]. " - in the database" . "<br> ";
 
 	}
-	echo "FETCHED SUCCESSFULLY";
+
 	mysql_close($connect);
 ?>

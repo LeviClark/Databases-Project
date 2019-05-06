@@ -42,16 +42,4 @@
 	} else {
 		echo "<center><h1>The user list is empty.</h1></center><br>";
 	}
-
-	echo "<center><h1>Levi's first card </h1></center>";
-	$k_query = "SELECT Card_Name1 FROM Armies a RIGHT OUTER JOIN Player ON Player.Army_Name = a.Army_Name WHERE Player_Name = 'Levi'";
-	$k_result = $mysli->query($k_query);
-	if ($k_result->num_rows > 0) {
-		
-		while ($row = $k_result->fetch_assoc()) {
-			echo "<center><p>is " .$row["Card_Name1"]. ".</p></center>";
-		}
-	} else {
-		echo "<center><h1>does not exist.</h1></center><br>";
-	}
 ?>

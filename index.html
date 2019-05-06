@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+
 	<head>
 		<style>
 		table, th, td {
@@ -12,10 +12,39 @@
 			EECS Project  Webpage
 		</title>
 		<p>Database Project</p>
-	<u1>	
-		<li><a href="http://people.eecs.ku.edu/~t222c011/eecs647/connect.php"> Test! </a></li>
-		<li><a href="http://people.eecs.ku.edu/~t222c011/eecs647/query1.php"> q1! </a></li>
+	<u1>
+		<!-- <li><a href="http://people.eecs.ku.edu/~l261c307/connect.php"> Test! </a></li> -->
 	</u1>
-		
+
+	<form action = "query1.php" method = "POST">
+		<input type = "hidden" name = "id" value = "<?php echo $value; ?>" />
+		<input type = "submit" value= "return the point value of the first army card from Awesome Army"  />
+	</form>
+
+	<h3>
+		SUBMIT NEW CARD
+	</h3>
+	<form method="post" action="submitCard.php">
+		CardName: <input type = text name = "cardName" /><br /><br />
+		PointValue: <input type= text name = "pointValue" /><br /><br />
+		<input type = "submit" value="Submit" />
+	</form>
+
+	<h3>
+		GENERATE RANDOM ARMY
+	</h3>
+	<form method="post" action="connect.php">
+		PointValue: <input type= text name = "pointValue" /><br /><br />
+		<input type = "submit" value="Submit" />
+	</form>
+
+	<h3>
+		SEARCH FOR CARD
+	</h3>
+	<form method="post" action="searchCard.php">
+		Card Name: <input type= text name = "cardName" /><br /><br />
+		<input type = "submit" value="Submit" />
+	</form>
+
 	</body>
 </html>
